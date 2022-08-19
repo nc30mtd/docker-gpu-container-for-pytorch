@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  nvpytorch:
+    build:
+      context: ./
+    working_dir: '/root/'
+    volumes:
+      - ./opt:/root/opt
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]
